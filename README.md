@@ -1,4 +1,7 @@
 open_civic_data
 ===============
 
- Ruby wrapper for the Sunlight Open Civic Data API
+# This is a work in progress
+
+Ruby wrapper for the Sunlight Open Civic Data API
+
