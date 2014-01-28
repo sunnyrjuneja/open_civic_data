@@ -23,8 +23,8 @@ def a_get(path)
   a_request(:get, OpenCivicData::Client::ENDPOINT + path)
 end
 
-def stub_get(path)
-  stub_request(:get, OpenCivicData::Client::ENDPOINT + path)
+def stub_get(path, options)
+  stub_request(:get, OpenCivicData::Client::ENDPOINT + path).with(query: options)
 end
 
 def fixture_path
