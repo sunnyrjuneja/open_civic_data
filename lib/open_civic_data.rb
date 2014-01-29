@@ -1,7 +1,7 @@
 require 'open_civic_data/client'
 
 module OpenCivicData
-  extend self
+  extend self # rubocop:disable ModuleFunction
   attr_accessor :key
 
   def new(key = key)
@@ -14,8 +14,6 @@ module OpenCivicData
     return super unless new.respond_to?(method)
     new.send(method, *args, &block)
   end
-  
-  def respond_to_missing?(method_name, include_private = false)
-    new.respond_to?(method_name, include_private)
-  end
+
+  def respond_to_missing?(method_name, include_private = false) new.respond_to?(method_name, include_private) end # rubocop:disable SingleLineMethods
 end
