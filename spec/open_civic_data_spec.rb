@@ -22,6 +22,10 @@ describe OpenCivicData do
     end
 
     describe '.method_missing' do
+      before do
+        stub_get('/jurisdictions/', 'apikey' => 'abcd1234').
+          to_return(status: 200, body: fixture('jurisdictions.json'))
+      end
       it 'delegates to an instance of OpenCivicData::Client' do
         client = OpenCivicData.new
         expect(client).to receive(:jurisdictions)
