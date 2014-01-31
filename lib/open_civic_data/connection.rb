@@ -5,6 +5,7 @@ module OpenCivicData
     ENDPOINT = 'http://api.opencivicdata.org'.freeze
 
   private
+
     def connection
       @connection ||= create_connection
     end
@@ -24,4 +25,3 @@ module OpenCivicData
     end
   end
 end
-

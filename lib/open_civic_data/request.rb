@@ -9,7 +9,7 @@ module OpenCivicData
     def request(method, path, options)
       response = connection.send(method) do  |request|
         request.params['apikey'] = @key
-        request.url(path, options) 
+        request.url(path, options)
       end
       response.body
     end
