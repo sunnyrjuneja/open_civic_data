@@ -8,8 +8,11 @@ module OpenCivicData
 
     attr_reader :key
 
+    @@key_required = true # rubocop:disable ClassVars
+    @@endpoint = 'http://api.opencivicdata.org' # rubocop:disable ClassVars
+
     def initialize(key)
-      fail ArgumentError, 'API key required' if key.nil?
+      fail ArgumentError, 'API key required' if key.nil? && @@key_required
       @key = key
     end
 
@@ -81,6 +84,36 @@ module OpenCivicData
     # @api public
     def votes(options = {})
       get('/votes/', options)
+    end
+
+    class << self
+      # Disable ArgumentError if no api key is provided. Useful for using different endpoints.
+      # @param [Boolean]
+      # @api public
+      # @example
+      #   OpenCivicData.key_required(false)
+      #   OpenCivicData.jurisdictions
+      def key_required=(bool)
+        @@key_required = bool # rubocop:disable ClassVars
+      end
+
+      # Check if key is required.
+      # @return [Boolean]
+      # @api public
+      # @example
+      #   if OpenCivicData.key_required
+      #     OpenCivicData.key = SUNLIGHT_KEY
+      def key_required
+        @@key_required
+      end
+
+      def endpoint=(endpoint)
+        @@endpoint = endpoint
+      end
+
+      def endpoint
+        @@endpoint
+      end
     end
   end
 end

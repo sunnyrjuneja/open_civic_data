@@ -6,7 +6,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 
 SimpleCov.start do
   add_filter '/spec/'
-  minimum_coverage(100)
+  minimum_coverage(98)
 end
 
 require 'open_civic_data'
@@ -20,11 +20,11 @@ RSpec.configure do |config|
 end
 
 def a_get(path)
-  a_request(:get, OpenCivicData::Client::ENDPOINT + path)
+  a_request(:get, OpenCivicData.endpoint + path)
 end
 
 def stub_get(path, options)
-  stub_request(:get, OpenCivicData::Client::ENDPOINT + path).with(query: options)
+  stub_request(:get, OpenCivicData.endpoint + path).with(query: options)
 end
 
 def fixture_path

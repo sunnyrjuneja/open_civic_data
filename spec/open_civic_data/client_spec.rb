@@ -2,9 +2,8 @@ require 'helper'
 
 describe OpenCivicData::Client do
   before do
-    apikey = 'abcd1234'
-    @client = OpenCivicData::Client.new(apikey)
-    @options = {'apikey' => apikey}
+    @client = OpenCivicData::Client.new('abcd1234')
+    @options = {'apikey' => 'abcd1234'}
   end
 
   describe '#jurisdictions' do
