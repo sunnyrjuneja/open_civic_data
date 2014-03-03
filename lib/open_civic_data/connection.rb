@@ -2,7 +2,7 @@ require 'faraday_middleware'
 
 module OpenCivicData
   module Connection
-    ENDPOINT = 'http://api.opencivicdata.org'.freeze
+# rubocop:disable EmptyLinesAroundBody
 
   private
 
@@ -11,7 +11,7 @@ module OpenCivicData
     end
 
     def create_connection
-      Faraday.new(url: ENDPOINT) do |connection|
+      Faraday.new(url: OpenCivicData.endpoint) do |connection|
         middlewares.each { |middleware| connection.use(middleware) }
         connection.adapter(Faraday.default_adapter)
       end

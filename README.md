@@ -73,6 +73,13 @@ OpenCivicData.people({'name' => 'Obama'})
 OpenCivicData.votes({'page' => 1 })
 ```
 
+###### Use with Other APIs
+```ruby
+# You can change the end point and disable key if necessary.
+OpenCivicData.key_required = false
+OpenCivicData.endpoint = 'http://imago-ca.herokuapp.com/'
+```
+
 ## Supported Ruby Versions
 This library aims to support and is [tested against][travis] the following Ruby
 implementations:

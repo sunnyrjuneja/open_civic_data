@@ -8,7 +8,7 @@ module OpenCivicData
 
     def request(method, path, options)
       response = connection.send(method) do  |request|
-        request.params['apikey'] = @key
+        request.params['apikey'] = @key if Client.key_required
         request.url(path, options)
       end
       response.body

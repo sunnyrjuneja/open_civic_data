@@ -5,7 +5,9 @@ module OpenCivicData
   attr_accessor :key
 
   # Alias for OpenCivicData::Client.new
-  #
+  # @api public
+  # @example
+  #   OpenCivicData.new(SUNLIGHT_KEY)
   # @return [OpenCivicData::Client]
   def new(key = key)
     yield self if block_given?
@@ -14,9 +16,17 @@ module OpenCivicData
   end
 
   # Delegate to OpenCivicData::Client
+  # @api public
+  # @example
+  #   OpenCivicData.jurisdictions
   def method_missing(method, *args, &block)
-    return super unless new.respond_to?(method)
-    new.send(method, *args, &block)
+    if OpenCivicData::Client.respond_to?(method)
+      OpenCivicData::Client.send(method, *args, &block)
+    elsif new.respond_to?(method)
+      new.send(method, *args, &block)
+    else
+      super
+    end
   end
 
   # return [Boolean]
