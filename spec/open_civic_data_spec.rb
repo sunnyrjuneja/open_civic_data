@@ -16,8 +16,8 @@ describe OpenCivicData do
       expect(OpenCivicData.key).to eq('1234abcd')
     end
     context 'with no api key' do
-      it 'raises an arguement error' do
-        expect { OpenCivicData.new(nil) }.to raise_error ArgumentError
+      it 'raises a warning' do
+        expect { OpenCivicData.new(nil) }.to write('Warning: Your API key may not be set').to(:stderr)
       end
     end
 

@@ -1,4 +1,5 @@
 require 'simplecov'
+require './spec/support/custom_expectations/write_expectations.rb'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
