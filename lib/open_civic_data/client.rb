@@ -9,7 +9,7 @@ module OpenCivicData
     attr_reader :key
 
     def initialize(key)
-      fail ArgumentError, 'API key required' if key.nil?
+      warn 'Warning: Your API key may not be set.' if key.nil?
       @key = key
     end
 
